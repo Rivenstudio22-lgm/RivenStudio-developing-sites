@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReivenStudio developing site</title>
+    <title>REIVENSTUDIO | Criação de Sites</title>
+    
+    <!-- LINHA DO FAVICON ADICIONADA AQUI -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <style>
         /* ESTILOS GERAIS - FUNDO PRETO */
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
             margin: 0; 
-            background-color: #0f0f0f; /* Preto estilo YouTube */
+            background-color: #0f0f0f; 
             color: #ffffff; 
         }
         
@@ -19,7 +23,7 @@
             justify-content: space-between; 
             align-items: center; 
             padding: 15px 5%; 
-            background: #1f1f1f; /* Cinza escuro */
+            background: #1f1f1f; 
             box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
             position: sticky; 
             top: 0; 
@@ -88,7 +92,6 @@
             cursor: pointer;
             font-weight: bold;
         }
-        .back-btn:hover { background: #444; }
 
         .overlay-content {
             padding: 40px 10%;
@@ -120,7 +123,7 @@
         .price { font-size: 28px; font-weight: 800; color: #ffffff; margin: 15px 0; }
         .tag { font-size: 12px; text-transform: uppercase; background: #ffd700; color: #000; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
 
-        /* BLOCO DE BENEFÍCIOS VIP SOLICITADO */
+        /* BLOCO DE BENEFÍCIOS VIP */
         .bloco-beneficios-vip {
             background: #1a1a1a;
             border: 2px solid #ffd700;
@@ -143,7 +146,7 @@
             color: #ffd700;
         }
 
-        /* AVISO DE ATENÇÃO */
+        /* CAIXA DE AVISO VERMELHA */
         .aviso-dominio {
             background: rgba(255, 0, 0, 0.1);
             border: 2px dashed #ff4444;
@@ -160,14 +163,13 @@
 
         /* BOTÃO WHATSAPP */
         .whatsapp-btn { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
-        .whatsapp-btn:hover { background: #128c7e; transform: scale(1.05); }
     </style>
 </head>
 <body>
 
     <!-- Header Principal -->
     <header>
-        <div class="logo">WEB MOZ</div>
+        <div class="logo">REIVENSTUDIO</div>
         <div class="nav-buttons">
             <button id="btnAbrirVIP" class="yt-button vip-button">PLANOS VIP ⭐</button>
             <button id="btnAbrirPatrocinadores" class="yt-button">Patrocinadores</button>
@@ -182,11 +184,11 @@
         </div>
         <div class="overlay-content">
             <h1>Nossos Parceiros</h1>
-            <p>O conteúdo personalizado que nos vai enviar ficará aqui...</p>
+            <p>O conteúdo personalizado aparecerá aqui...</p>
         </div>
     </div>
 
-    <!-- TELA VIP (PREÇOS COM DOMÍNIO - TELA CHEIA) -->
+    <!-- TELA VIP (TELA CHEIA) -->
     <div id="panelVIP" class="full-screen-overlay" style="background: #050505;">
         <div class="overlay-header">
             <button class="back-btn" onclick="fecharTudo()">← Voltar ao Normal</button>
@@ -195,9 +197,9 @@
         
         <div class="overlay-content">
             <h1 style="color: #ffd700; margin-bottom: 5px;">Pacotes Profissionais "Tudo Incluído"</h1>
-            <p style="color: #aaa; margin-bottom: 30px;">A solução definitiva para o seu negócio se destacar no mercado.</p>
+            <p style="color: #aaa; margin-bottom: 30px;">A solução definitiva para o seu negócio.</p>
             
-            <!-- BLOCO DE BENEFÍCIOS ADICIONADO -->
+            <!-- BLOCO DE BENEFÍCIOS VIP -->
             <div class="bloco-beneficios-vip">
                 <div class="item-beneficio">⏱️ Entrega em 42h</div>
                 <div class="item-beneficio">🌐 Domínio Incluído</div>
@@ -234,7 +236,7 @@
         </div>
     </div>
 
-    <!-- SITE NORMAL (FUNDO PRETO) -->
+    <!-- SITE NORMAL -->
     <main style="padding: 50px 5%; text-align: center;">
         <h1>Nossos Pacotes Simples</h1>
         <p style="color: #aaa;">Preços apenas pela criação do design e montagem da estrutura.</p>
@@ -262,7 +264,7 @@
             </div>
         </div>
 
-        <!-- AVISO DE ATENÇÃO -->
+        <!-- CAIXA DE AVISO VERMELHA SOLICITADA -->
         <div class="aviso-dominio">
             ⚠️ ATENÇÃO: Estes sites não têm domínio incluído. <br>
             Tens que ir para o VIP para teres domínio!
@@ -270,7 +272,7 @@
     </main>
 
     <!-- Botão WhatsApp -->
-    <a href="https://chat.whatsapp.com/EGZ1sRKeV4kClKO5f3jm26" class="whatsapp-btn" target="_blank">Falar no WhatsApp</a>
+    <a href="wa.me" class="whatsapp-btn" target="_blank">Falar no WhatsApp</a>
 
     <script>
         const pPatroc = document.getElementById('panelPatrocinadores');
