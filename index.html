@@ -3,122 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReivenStudio developing sites</title>
+    <title>ReivenStudio developing site</title>
     <style>
-        /* ESTILOS BASE */
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
+        /* ESTILOS GERAIS - FUNDO PRETO */
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; 
+            background-color: #0f0f0f; /* Preto estilo YouTube */
+            color: #ffffff; 
+        }
         
-        /* HEADER */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        /* HEADER PRINCIPAL */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 5%; 
+            background: #1f1f1f; /* Cinza escuro */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        
+        .logo { font-size: 1.5rem; color: #fff; font-weight: bold; }
         .nav-buttons { display: flex; gap: 10px; }
 
-        /* BOTOES */
-        .yt-button { background: #f1f1f1; border: 1px solid #ddd; padding: 10px 18px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        .vip-button { background: linear-gradient(45deg, #ffd700, #ffa500); color: #000; border: none; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3); }
+        /* BOTOES ESTILO YOUTUBE */
+        .yt-button { 
+            background: #2f2f2f; 
+            color: #fff;
+            border: 1px solid #3f3f3f; 
+            padding: 10px 18px; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            transition: 0.3s;
+            font-size: 14px;
+        }
+        .yt-button:hover { background: #3f3f3f; }
 
-        /* OVERLAYS TELA CHEIA */
-        .full-screen-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 2000; display: none; flex-direction: column; animation: slideUp 0.4s ease-out; }
-        .vip-overlay { background: #0a0a0a; color: #fff; }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        /* BOTÃO VIP ESPECIAL */
+        .vip-button {
+            background: linear-gradient(45deg, #ffd700, #ffa500);
+            color: #000;
+            border: none;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+        }
+        .vip-button:hover { transform: scale(1.05); background: linear-gradient(45deg, #ffcc00, #ff8c00); }
 
-        .overlay-header { display: flex; align-items: center; padding: 15px 5%; border-bottom: 1px solid #eee; }
-        .vip-overlay .overlay-header { background: #1a1a1a; border-bottom: 1px solid #333; }
-        .back-btn { background: #eee; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        /* OVERLAY TELA CHEIA */
+        .full-screen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #121212;
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .overlay-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 1px solid #2d2d2d;
+            background: #1a1a1a;
+        }
+
+        .back-btn {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .back-btn:hover { background: #444; }
+
+        .overlay-content {
+            padding: 40px 10%;
+            text-align: center;
+            overflow-y: auto;
+            color: #fff;
+        }
 
         /* GRID DE PREÇOS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px 5%; }
-        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; color: #333; }
-        .vip-card { background: #1a1a1a; border: 1px solid #ffd700; color: #fff; transition: 0.3s; }
-        .vip-card:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; }
         
-        .price { font-size: 26px; font-weight: bold; margin: 15px 0; }
+        /* CARD NORMAL */
+        .card { 
+            background: #1f1f1f; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            transition: 0.3s; 
+            border: 1px solid #2d2d2d; 
+            color: #fff;
+        }
+        .card:hover { transform: translateY(-10px); border-color: #555; }
+        .card h3 { color: #3b82f6; margin-bottom: 15px; font-size: 1.3rem; }
+        
+        /* CARD VIP */
+        .vip-card { background: #141414; border: 1px solid #ffd700; }
+        .vip-card:hover { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        
+        .price { font-size: 28px; font-weight: 800; color: #ffffff; margin: 15px 0; }
         .tag { font-size: 12px; text-transform: uppercase; background: #ffd700; color: #000; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
 
-        /* WHATSAPP */
-        .whatsapp-btn { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 3000; }
+        /* BLOCO DE BENEFÍCIOS VIP SOLICITADO */
+        .bloco-beneficios-vip {
+            background: #1a1a1a;
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+        }
+        .item-beneficio {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        /* AVISO DE ATENÇÃO */
+        .aviso-dominio {
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px dashed #ff4444;
+            color: #ff9999;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 50px auto 20px auto;
+            max-width: 600px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* BOTÃO WHATSAPP */
+        .whatsapp-btn { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+        .whatsapp-btn:hover { background: #128c7e; transform: scale(1.05); }
     </style>
 </head>
 <body>
 
+    <!-- Header Principal -->
     <header>
-        <div style="font-weight: bold; font-size: 1.2rem;">WEB MOZ</div>
+        <div class="logo">WEB MOZ</div>
         <div class="nav-buttons">
             <button id="btnAbrirVIP" class="yt-button vip-button">PLANOS VIP ⭐</button>
             <button id="btnAbrirPatrocinadores" class="yt-button">Patrocinadores</button>
         </div>
     </header>
 
-    <!-- TELA PATROCINADORES -->
+    <!-- TELA PATROCINADORES (TELA CHEIA) -->
     <div id="panelPatrocinadores" class="full-screen-overlay">
         <div class="overlay-header">
             <button class="back-btn" onclick="fecharTudo()">← Voltar</button>
-            <b style="margin-left:20px; color:red">PATROCINADORES</b>
+            <b style="margin-left: 20px; color: #ff4444;">PATROCINADORES</b>
         </div>
-        <div style="padding: 50px; text-align: center;">
-            <h1>Espaço para o seu texto...</h1>
+        <div class="overlay-content">
+            <h1>Nossos Parceiros</h1>
+            <p>O conteúdo personalizado que nos vai enviar ficará aqui...</p>
         </div>
     </div>
 
-    <!-- TELA VIP (PREÇOS COM DOMÍNIO) -->
-    <div id="panelVIP" class="full-screen-overlay vip-overlay">
+    <!-- TELA VIP (PREÇOS COM DOMÍNIO - TELA CHEIA) -->
+    <div id="panelVIP" class="full-screen-overlay" style="background: #050505;">
         <div class="overlay-header">
             <button class="back-btn" onclick="fecharTudo()">← Voltar ao Normal</button>
-            <b style="margin-left:20px; color:#ffd700">EXPERIÊNCIA VIP (Domínio Incluso)</b>
+            <b style="margin-left: 20px; color: #ffd700;">EXPERIÊNCIA VIP</b>
         </div>
         
-        <div style="text-align: center; padding-top: 40px;">
-            <h1 style="color: #ffd700;">Pacotes Profissionais "Tudo Incluído"</h1>
-            <p>Nesta modalidade, registamos o seu domínio (.com ou .co.mz) por si.</p>
-        </div>
-
-        <div class="grid">
-            <div class="card vip-card">
-                <span class="tag">Domínio Incluído</span>
-                <h3>Página Canva VIP</h3>
-                <div class="price">2.000 MT</div>
-                <small>Design + Registo de Nome</small>
+        <div class="overlay-content">
+            <h1 style="color: #ffd700; margin-bottom: 5px;">Pacotes Profissionais "Tudo Incluído"</h1>
+            <p style="color: #aaa; margin-bottom: 30px;">A solução definitiva para o seu negócio se destacar no mercado.</p>
+            
+            <!-- BLOCO DE BENEFÍCIOS ADICIONADO -->
+            <div class="bloco-beneficios-vip">
+                <div class="item-beneficio">⏱️ Entrega em 42h</div>
+                <div class="item-beneficio">🌐 Domínio Incluído</div>
+                <div class="item-beneficio">🛠️ Direito a Manutenção</div>
             </div>
-            <div class="card vip-card">
-                <span class="tag">Domínio Incluído</span>
-                <h3>Site Pessoal VIP</h3>
-                <div class="price">2.500 MT</div>
-                <small>Design + Registo de Nome</small>
-            </div>
-            <div class="card vip-card">
-                <span class="tag">Domínio Incluído</span>
-                <h3>Marca / Roupa VIP</h3>
-                <div class="price">4.500 MT</div>
-                <small>Loja Completa + Domínio</small>
-            </div>
-            <div class="card vip-card">
-                <span class="tag">Domínio Incluído</span>
-                <h3>Restaurante VIP</h3>
-                <div class="price">6.500 MT</div>
-                <small>Menu Online + Domínio</small>
-            </div>
-            <div class="card vip-card">
-                <span class="tag">Domínio Incluído</span>
-                <h3>Web App VIP</h3>
-                <div class="price">8.500 MT</div>
-                <small>Sistema Completo + Domínio</small>
+            
+            <div class="grid">
+                <div class="card vip-card">
+                    <span class="tag">Domínio Incluído</span>
+                    <h3>Página Canva VIP</h3>
+                    <div class="price">2.000 MT</div>
+                </div>
+                <div class="card vip-card">
+                    <span class="tag">Domínio Incluído</span>
+                    <h3>Site Pessoal VIP</h3>
+                    <div class="price">2.500 MT</div>
+                </div>
+                <div class="card vip-card">
+                    <span class="tag">Domínio Incluído</span>
+                    <h3>Marca / Roupa VIP</h3>
+                    <div class="price">4.500 MT</div>
+                </div>
+                <div class="card vip-card">
+                    <span class="tag">Domínio Incluído</span>
+                    <h3>Restaurante VIP</h3>
+                    <div class="price">6.500 MT</div>
+                </div>
+                <div class="card vip-card">
+                    <span class="tag">Domínio Incluído</span>
+                    <h3>Web App VIP</h3>
+                    <div class="price">8.500 MT</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- SITE NORMAL -->
-    <main style="text-align: center; padding: 50px 5%;">
+    <!-- SITE NORMAL (FUNDO PRETO) -->
+    <main style="padding: 50px 5%; text-align: center;">
         <h1>Nossos Pacotes Simples</h1>
-        <p>Preços apenas pela criação (sem domínio próprio).</p>
+        <p style="color: #aaa;">Preços apenas pela criação do design e montagem da estrutura.</p>
+        
         <div class="grid">
-            <div class="card"><h3>Página Canva</h3><div class="price">500 MT</div></div>
-            <div class="card"><h3>Site Pessoal</h3><div class="price">1.000 MT</div></div>
-            <div class="card"><h3>Marca / Roupa</h3><div class="price">3.000 MT</div></div>
-            <div class="card"><h3>Restaurante</h3><div class="price">5.000 MT</div></div>
-            <div class="card"><h3>Web App</h3><div class="price">7.000 MT</div></div>
+            <div class="card">
+                <h3>Página Canva</h3>
+                <div class="price">500 MT</div>
+            </div>
+            <div class="card">
+                <h3>Site Pessoal</h3>
+                <div class="price">1.000 MT</div>
+            </div>
+            <div class="card">
+                <h3>Marca / Roupa</h3>
+                <div class="price">3.000 MT</div>
+            </div>
+            <div class="card">
+                <h3>Restaurante</h3>
+                <div class="price">5.000 MT</div>
+            </div>
+            <div class="card">
+                <h3>Web App</h3>
+                <div class="price">7.000 MT</div>
+            </div>
+        </div>
+
+        <!-- AVISO DE ATENÇÃO -->
+        <div class="aviso-dominio">
+            ⚠️ ATENÇÃO: Estes sites não têm domínio incluído. <br>
+            Tens que ir para o VIP para teres domínio!
         </div>
     </main>
 
-    <a href="https://chat.whatsapp.com/EGZ1sRKeV4kClKO5f3jm26" class="whatsapp-btn" target="_blank">Falar com Consultor VIP</a>
+    <!-- Botão WhatsApp -->
+    <a href="wa.me" class="whatsapp-btn" target="_blank">Falar no WhatsApp</a>
 
     <script>
         const pPatroc = document.getElementById('panelPatrocinadores');
