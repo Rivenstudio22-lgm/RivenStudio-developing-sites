@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REIVENSTUDIO | Criação de Sites</title>
-    <!-- Fonte Google para uma tipografia moderna -->
+    <!-- Fonte Google de alta qualidade -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
-        /* RESET E CONFIGURAÇÕES GERAIS */
+        /* RESET E CORES BASE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #0d0f12;
+            --card-bg: #171717;
+            --border-color: #262626;
+            --text-gray: #a0aec0;
+            --accent-vip: #ffcc00;
+            --accent-blue: #3b82f6;
+            --whatsapp-green: #25d366;
+        }
+
         body {
-            background-color: #0d0f12;
+            background-color: var(--bg-dark);
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
@@ -25,7 +35,7 @@
         /* HERO / CABEÇALHO */
         header {
             text-align: center;
-            padding: 60px 20px 40px 20px;
+            padding: 50px 20px 30px 20px;
             background: linear-gradient(180deg, #171923 0%, #0d0f12 100%);
         }
 
@@ -37,58 +47,135 @@
         }
 
         header h1 span {
-            color: #ffcc00;
+            color: var(--accent-vip);
         }
 
         header p {
-            color: #a0aec0;
+            color: var(--text-gray);
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* ESTRUTURA DOS PREÇOS */
-        .pricing-section {
-            padding: 40px 20px 80px 20px;
+        /* SECÇÃO DE PATROCINADORES */
+        .sponsors-section {
+            max-width: 800px;
+            margin: 10px auto 40px auto;
+            text-align: center;
+            padding: 0 20px;
         }
 
-        .pricing-container {
-            max-width: 1200px;
+        .sponsors-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        .sponsors-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            width: fit-content;
             margin: 0 auto;
         }
 
-        .category-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .category-header h3 {
-            font-size: 1.8rem;
-            color: #ffffff;
+        .sponsor-logo-placeholder {
             font-weight: 700;
+            color: #ffffff;
+            font-size: 1.1rem;
         }
 
-        .category-subtitle {
-            color: #a0aec0;
-            font-size: 0.95rem;
-            margin-top: 5px;
+        .btn-sponsor-more {
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            border: 1px solid var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
         }
 
-        /* GRELHA DE CARDS DE PREÇO (IDÊNTICA AO SEU LAYOUT) */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        .btn-sponsor-more:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* BOTÕES DE ALTERNÂNCIA (VIP VS SIMPLES) */
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 40px;
+            padding: 0 20px;
         }
 
-        /* CARDS DO DESIGN DO SEU SITE */
+        .toggle-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            border-color: #4a5568;
+        }
+
+        .toggle-btn.active[data-target="vip"] {
+            background: var(--accent-vip);
+            color: #0d0f12;
+            border-color: var(--accent-vip);
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+        }
+
+        .toggle-btn.active[data-target="simples"] {
+            background: var(--accent-blue);
+            color: #ffffff;
+            border-color: var(--accent-blue);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* ÁREA DOS PLANOS */
+        .pricing-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px 20px;
+        }
+
+        .pricing-grid {
+            display: none; /* Controlado via JavaScript abaixo */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .pricing-grid.active-grid {
+            display: grid;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ESTRUTURA DOS CARDS */
         .price-card {
-            background: #171717;
-            border: 1px solid #262626;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 35px 20px;
             text-align: center;
+            position: relative;
             transition: transform 0.2s ease, border-color 0.2s ease;
             display: flex;
             flex-direction: column;
@@ -96,30 +183,66 @@
         }
 
         .price-card:hover {
-            transform: translateY(-4px);
-            border-color: #3f3f46;
+            transform: translateY(-5px);
         }
 
-        .price-card h4 {
-            font-size: 1.1rem;
-            color: #3b82f6; /* Azul conforme a sua imagem */
-            margin-bottom: 15px;
-            font-weight: 600;
+        /* Cores de títulos baseadas nos tipos de planos */
+        .vip-grid .price-card h4 {
+            color: var(--accent-vip);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .simple-grid .price-card h4 {
+            color: var(--accent-blue);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .price {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
+            margin-bottom: 15px;
             color: #ffffff;
-            margin-bottom: 25px;
         }
 
-        /* BOTÃO WHATSAPP EM CADA PLANO */
+        .price-card ul {
+            list-style: none;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .price-card ul li strong {
+            color: #ffffff;
+        }
+
+        /* ETIQUETAS DO PROJETO */
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            color: var(--accent-vip);
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 20px;
+            border: 1px solid var(--accent-vip);
+            text-transform: uppercase;
+        }
+
+        /* BOTÃO DO WHATSAPP */
         .btn-buy {
             display: block;
             width: 100%;
             padding: 12px;
-            background-color: #25d366;
+            background-color: var(--whatsapp-green);
             color: #ffffff;
             border-radius: 8px;
             font-weight: 700;
@@ -132,25 +255,25 @@
             background-color: #1ebd58;
         }
 
-        /* ALERTA EM VERMELHO DE ACORDO COM A SUA IMAGEM */
-        .warning-box {
-            border: 1px dashed #7f1d1d;
-            background-color: rgba(127, 29, 29, 0.2);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 650px;
-            margin: 40px auto 0 auto;
+        /* CAIXAS DE AVISO CONTEXTUAIS */
+        .info-box {
             text-align: center;
-        }
-
-        .warning-box p {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 10px;
             font-size: 0.95rem;
-            color: #f87171;
-            line-height: 1.6;
         }
 
-        .warning-box strong {
-            color: #ef4444;
+        .vip-info {
+            background: rgba(255, 204, 0, 0.05);
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            color: var(--accent-vip);
+        }
+
+        .simple-warning {
+            background: rgba(127, 29, 29, 0.2);
+            border: 1px dashed #7f1d1d;
+            color: #f87171;
         }
 
         /* RODAPÉ */
@@ -160,86 +283,61 @@
             background-color: #171923;
             color: #718096;
             font-size: 0.9rem;
-            border-top: 1px solid #2d3748;
+            border-top: 1px solid var(--border-color);
         }
 
-        /* RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS */
+        /* RESPONSIVIDADE EM SMARTPHONES */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.3rem; }
+            header h1 { font-size: 2.2rem; }
+            .toggle-container { flex-direction: column; gap: 10px; }
+            .toggle-btn { width: 100%; }
             .pricing-grid {
                 grid-template-columns: 1fr;
-                max-width: 320px;
-                margin: 0 auto 30px auto;
+                max-width: 340px;
+                margin: 0 auto;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO DA PÁGINA INICIAL -->
+    <!-- CABEÇALHO -->
     <header>
         <h1>REIVEN<span>STUDIO</span></h1>
-        <p>Abaixo estão os nossos planos simples integrados diretamente na homepage.</p>
+        <p>Desenvolvimento web profissional para colocar o seu negócio no topo.</p>
     </header>
 
-    <!-- SECÇÃO QUE RETIROU DA PÁGINA SECUNDÁRIA -->
-    <section class="pricing-section">
-        <div class="pricing-container">
-            
-            <div class="category-header">
-                <h3>Nossos Pacotes Simples</h3>
-                <p class="category-subtitle">Preços apenas pela criação do design e montagem da estrutura.</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <!-- 1. Página Canva -->
-                <div class="price-card">
-                    <h4>Página Canva</h4>
-                    <div class="price">500 MT</div>
-                    <a href="https://wa.me" class="btn-buy" target="_blank">Falar no WhatsApp</a>
-                </div>
-
-                <!-- 2. Site Pessoal -->
-                <div class="price-card">
-                    <h4>Site Pessoal</h4>
-                    <div class="price">1.000 MT</div>
-                    <a href="https://wa.me" class="btn-buy" target="_blank">Falar no WhatsApp</a>
-                </div>
-
-                <!-- 3. Marca / Roupa -->
-                <div class="price-card">
-                    <h4>Marca / Roupa</h4>
-                    <div class="price">3.000 MT</div>
-                    <a href="https://wa.me" class="btn-buy" target="_blank">Falar no WhatsApp</a>
-                </div>
-
-                <!-- 4. Restaurante -->
-                <div class="price-card">
-                    <h4>Restaurante</h4>
-                    <div class="price">5.000 MT</div>
-                    <a href="https://wa.me" class="btn-buy" target="_blank">Falar no WhatsApp</a>
-                </div>
-
-                <!-- 5. Web App -->
-                <div class="price-card">
-                    <h4>Web App</h4>
-                    <div class="price">7.000 MT</div>
-                    <a href="https://wa.me" class="btn-buy" target="_blank">Falar no WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- TABELA DE AVISO (CONFORME EXIBIDO NO SEU PRINT) -->
-            <div class="warning-box">
-                <p>⚠️ <strong>ATENÇÃO:</strong> Estes sites não têm domínio incluído.<br>Tens que ir para o VIP para teres domínio!</p>
-            </div>
-
+    <!-- SECÇÃO DE PATROCINADORES -->
+    <div class="sponsors-section">
+        <p class="sponsors-title">Patrocinado por:</p>
+        <div class="sponsors-box">
+            <span class="sponsor-logo-placeholder">Born2Own</span>
+            <a href="#" class="btn-sponsor-more">saiba mais...</a>
         </div>
-    </section>
+    </div>
 
-    <!-- RODAPÉ DA PÁGINA -->
-    <footer>
-        <p>&copy; 2026 REIVENSTUDIO. Todos os direitos reservados.</p>
-    </footer>
+    <!-- BOTÕES DE ALTERNÂNCIA (VIP OU SIMPLES) -->
+    <div class="toggle-container">
+        <button class="toggle-btn active" data-target="vip">⭐ Ver Planos VIP</button>
+        <button class="toggle-btn" data-target="simples">Ver Pacotes Simples</button>
+    </div>
 
-</body>
-</html>
+    <!-- ÁREA CENTRAL DOS PREÇOS -->
+    <main class="pricing-section">
+
+        <!-- GRELHA DE PRODUTOS 1: PACOTES VIP -->
+        <div id="vip-grid" class="pricing-grid vip-grid active-grid">
+            <div class="info-box vip-info">
+                ⏱ Entrega em 42h | 🌐 Domínio Incluído | 🛠 Direito a Manutenção
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; width: 100%;">
+                
+                <!-- Página Canva VIP -->
+                <div class="price-card">
+                    <div class="badge">VIP</div>
+                    <h4>Página Canva VIP</h4>
+                    <div class="price">2.000 MT</div>
+                    <ul>
+                        <li>🌐 <strong>Domínio Incluído</strong></li>
+                        <li>🛠 Suporte Premium</li>
+                    </ul>
