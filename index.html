@@ -166,8 +166,22 @@
             margin: 0 auto;
         }
 
-        /* BOTÃO WHATSAPP */
-        .whatsapp-btn { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+        /* BOTÕES DO WHATSAPP FIXADOS NO MESMO SITIO */
+        .whatsapp-btn { 
+            position: fixed; 
+            bottom: 25px; 
+            right: 25px; 
+            color: white; 
+            padding: 15px 25px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            z-index: 3000; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5); 
+        }
+        
+        #whatsappNormal { background: #25d366; display: block; }
+        #whatsappVIP { background: #25d366; display: none; } /* Mantido verde igual ao original */
     </style>
 </head>
 <body>
@@ -200,7 +214,6 @@
             <h1>Nossos Parceiros</h1>
             <p style="color: #aaa; font-size: 1.1rem;">Patrocinado Por:</p>
             
-            <!-- Caixa de Destaque do Patrocinador -->
             <div class="sponsor-container">
                 <img src="logoazul.jpeg" alt="Logótipo Born2Own" class="sponsor-logo">
                 <h3 style="margin-top: 15px; color: #ffffff; font-size: 1.4rem; letter-spacing: 1px;">Born2Own</h3>
@@ -219,14 +232,12 @@
             <h1 style="color: #ffd700; margin-bottom: 5px;">Pacotes Profissionais "Tudo Incluído"</h1>
             <p style="color: #aaa; margin-bottom: 30px;">A solução definitiva para o seu negócio.</p>
             
-            <!-- BLOCO DE BENEFÍCIOS VIP -->
             <div class="bloco-beneficios-vip">
                 <div class="item-beneficio">⏱️ Entrega em 42h</div>
                 <div class="item-beneficio">🌐 Domínio Incluído</div>
                 <div class="item-beneficio">🛠️ Direito a Manutenção</div>
             </div>
             
-            <!-- GRID DE PLANOS -->
             <div class="grid">
                 <div class="card vip-card">
                     <span class="tag">Domínio Incluído</span>
@@ -252,25 +263,16 @@
         </div>
     </div>
 
-    <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me" class="whatsapp-btn" target="_blank">Fale Connosco 💬</a>
+    <!-- 1. BOTÃO WHATSAPP PADRÃO -->
+    <a href="https://wa.me" id="whatsappNormal" class="whatsapp-btn" target="_blank">Fale Connosco 💬</a>
+
+    <!-- 2. BOTÃO WHATSAPP EXCLUSIVO DA TELA VIP -->
+    <a href="https://wa.me" id="whatsappVIP" class="whatsapp-btn" target="_blank">Fale Connosco 💬</a>
 
     <!-- SCRIPTS JAVASCRIPT -->
     <script>
-        // Mapear elementos do HTML
         const btnVIP = document.getElementById('btnAbrirVIP');
         const btnPatrocinadores = document.getElementById('btnAbrirPatrocinadores');
         const panelVIP = document.getElementById('panelVIP');
         const panelPatrocinadores = document.getElementById('panelPatrocinadores');
-
-        // Eventos para abrir as telas cheias
-        btnVIP.addEventListener('click', () => {
-            fecharTudo();
-            panelVIP.style.display = 'flex';
-        });
-
-        btnPatrocinadores.addEventListener('click', () => {
-            fecharTudo();
-            panelPatrocinadores.style.display = 'flex';
-        });
-
+        
