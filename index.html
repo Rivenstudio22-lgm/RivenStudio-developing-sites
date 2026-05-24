@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REIVENSTUDIO | Criação de Sites</title>
     
-    <!-- LINHA DO FAVICON ADICIONADA AQUI -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
@@ -65,7 +65,7 @@
             height: 100%;
             background: #121212;
             z-index: 2000;
-            display: none;
+            display: none; /* Controlado via JavaScript */
             flex-direction: column;
             animation: slideUp 0.4s ease-out;
         }
@@ -121,7 +121,7 @@
         .vip-card:hover { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
         
         .price { font-size: 28px; font-weight: 800; color: #ffffff; margin: 15px 0; }
-        .tag { font-size: 12px; text-transform: uppercase; background: #ffd700; color: #000; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+        .tag { font-size: 12px; text-transform: uppercase; background: #ffd700; color: #000; padding: 4px 8px; border-radius: 4px; font-weight: bold; display: inline-block; }
 
         /* BLOCO DE BENEFÍCIOS VIP */
         .bloco-beneficios-vip {
@@ -146,19 +146,24 @@
             color: #ffd700;
         }
 
-        /* CAIXA DE AVISO VERMELHA */
-        .aviso-dominio {
-            background: rgba(255, 0, 0, 0.1);
-            border: 2px dashed #ff4444;
-            color: #ff9999;
+        /* CONTAINER DO PATROCINADOR */
+        .sponsor-container {
+            margin-top: 30px;
+            display: inline-block;
+            background: #1f1f1f;
             padding: 20px;
-            border-radius: 12px;
-            margin: 50px auto 20px auto;
-            max-width: 600px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            line-height: 1.6;
-            text-align: center;
+            border-radius: 15px;
+            border: 1px solid #2d2d2d;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .sponsor-logo {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
         }
 
         /* BOTÃO WHATSAPP */
@@ -176,6 +181,15 @@
         </div>
     </header>
 
+    <!-- CONTEÚDO PRINCIPAL (Ecrã Inicial) -->
+    <main style="padding: 100px 5%; text-align: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 15px;">REIVENSTUDIO</h1>
+        <p style="color: #aaa; font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px auto;">
+            Criação de sites profissionais e modernos para elevar o nível do seu negócio.
+        </p>
+        <p style="color: #ffd700; font-weight: bold;">✨ Explore os nossos planos e parceiros nos botões acima.</p>
+    </main>
+
     <!-- TELA PATROCINADORES (TELA CHEIA) -->
     <div id="panelPatrocinadores" class="full-screen-overlay">
         <div class="overlay-header">
@@ -184,9 +198,13 @@
         </div>
         <div class="overlay-content">
             <h1>Nossos Parceiros</h1>
-            <p> Patrocinado Por:
-                logoazul.jpeg
-                  Born2Own</p>
+            <p style="color: #aaa; font-size: 1.1rem;">Patrocinado Por:</p>
+            
+            <!-- Caixa de Destaque do Patrocinador -->
+            <div class="sponsor-container">
+                <img src="logoazul.jpeg" alt="Logótipo Born2Own" class="sponsor-logo">
+                <h3 style="margin-top: 15px; color: #ffffff; font-size: 1.4rem; letter-spacing: 1px;">Born2Own</h3>
+            </div>
         </div>
     </div>
 
@@ -208,6 +226,7 @@
                 <div class="item-beneficio">🛠️ Direito a Manutenção</div>
             </div>
             
+            <!-- GRID DE PLANOS -->
             <div class="grid">
                 <div class="card vip-card">
                     <span class="tag">Domínio Incluído</span>
@@ -229,65 +248,29 @@
                     <h3>Restaurante VIP</h3>
                     <div class="price">6.500 MT</div>
                 </div>
-                <div class="card vip-card">
-                    <span class="tag">Domínio Incluído</span>
-                    <h3>Web App VIP</h3>
-                    <div class="price">8.500 MT</div>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- SITE NORMAL -->
-    <main style="padding: 50px 5%; text-align: center;">
-        <h1>Nossos Pacotes Simples</h1>
-        <p style="color: #aaa;">Preços apenas pela criação do design e montagem da estrutura.</p>
-        
-        <div class="grid">
-            <div class="card">
-                <h3>Página Canva</h3>
-                <div class="price">500 MT</div>
-            </div>
-            <div class="card">
-                <h3>Site Pessoal</h3>
-                <div class="price">1.000 MT</div>
-            </div>
-            <div class="card">
-                <h3>Marca / Roupa</h3>
-                <div class="price">3.000 MT</div>
-            </div>
-            <div class="card">
-                <h3>Restaurante</h3>
-                <div class="price">5.000 MT</div>
-            </div>
-            <div class="card">
-                <h3>Web App</h3>
-                <div class="price">7.000 MT</div>
-            </div>
-        </div>
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me" class="whatsapp-btn" target="_blank">Fale Connosco 💬</a>
 
-        <!-- CAIXA DE AVISO VERMELHA SOLICITADA -->
-        <div class="aviso-dominio">
-            ⚠️ ATENÇÃO: Estes sites não têm domínio incluído. <br>
-            Tens que ir para o VIP para teres domínio!
-        </div>
-    </main>
-
-    <!-- Botão WhatsApp -->
-    <a href="wa.me" class="whatsapp-btn" target="_blank">Falar no WhatsApp</a>
-
+    <!-- SCRIPTS JAVASCRIPT -->
     <script>
-        const pPatroc = document.getElementById('panelPatrocinadores');
-        const pVIP = document.getElementById('panelVIP');
+        // Mapear elementos do HTML
+        const btnVIP = document.getElementById('btnAbrirVIP');
+        const btnPatrocinadores = document.getElementById('btnAbrirPatrocinadores');
+        const panelVIP = document.getElementById('panelVIP');
+        const panelPatrocinadores = document.getElementById('panelPatrocinadores');
 
-        document.getElementById('btnAbrirPatrocinadores').onclick = () => { pPatroc.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        document.getElementById('btnAbrirVIP').onclick = () => { pVIP.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        
-        function fecharTudo() { 
-            pPatroc.style.display = 'none'; 
-            pVIP.style.display = 'none'; 
-            document.body.style.overflow = 'auto'; 
-        }
-    </script>
-</body>
-</html>
+        // Eventos para abrir as telas cheias
+        btnVIP.addEventListener('click', () => {
+            fecharTudo();
+            panelVIP.style.display = 'flex';
+        });
+
+        btnPatrocinadores.addEventListener('click', () => {
+            fecharTudo();
+            panelPatrocinadores.style.display = 'flex';
+        });
+
