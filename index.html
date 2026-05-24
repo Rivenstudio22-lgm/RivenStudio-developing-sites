@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REIVENSTUDIO | Criação de Sites</title>
-    <!-- Correção do link das fontes Google -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
@@ -57,7 +56,7 @@
             margin: 0 auto;
         }
 
-        /* MENU DE BOTÕES (PLANOS VIP & PATROCINADORES) */
+        /* MENU DE BOTÕES INTEGRAÇÃO */
         .navigation-container {
             display: flex;
             justify-content: center;
@@ -82,7 +81,14 @@
             border-color: #4a5568;
         }
 
-        /* Cores ativas para cada botão */
+        /* Cores dos botões ativos */
+        .nav-btn.active[data-target="simples-section"] {
+            background: var(--accent-blue);
+            color: #ffffff;
+            border-color: var(--accent-blue);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
         .nav-btn.active[data-target="vip-section"] {
             background: var(--accent-vip);
             color: #0d0f12;
@@ -91,13 +97,13 @@
         }
 
         .nav-btn.active[data-target="sponsors-section"] {
-            background: var(--accent-blue);
-            color: #ffffff;
-            border-color: var(--accent-blue);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            background: #ffffff;
+            color: #0d0f12;
+            border-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
         }
 
-        /* ÁREAS DE CONTEÚDO (CONTROLADAS POR JS) */
+        /* ÁREAS DE CONTEÚDO DIFERENCIADO */
         .content-section {
             display: none;
             max-width: 1200px;
@@ -113,6 +119,124 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* GRELHA DOS CARDS */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px 20px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+
+        /* ESTILO DOS TEXTOS INTERNOS DOS PLANOS */
+        .simple-grid .price-card h4 {
+            color: var(--accent-blue);
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .vip-grid .price-card h4 {
+            color: var(--accent-vip);
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .price-card ul {
+            list-style: none;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .price-card ul li strong {
+            color: #ffffff;
+        }
+
+        /* ETIQUETA VIP */
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            color: var(--accent-vip);
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 20px;
+            border: 1px solid var(--accent-vip);
+            text-transform: uppercase;
+        }
+
+        /* BOTÃO DO WHATSAPP */
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+
+        .btn-buy:hover {
+            background-color: #1ebd58;
+        }
+
+        /* COMPONENTES DE CRÍTICA E AVISO */
+        .info-box {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
+        .simple-warning {
+            background: rgba(127, 29, 29, 0.2);
+            border: 1px dashed #7f1d1d;
+            color: #f87171;
+        }
+
+        .vip-info {
+            background: rgba(255, 204, 0, 0.05);
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            color: var(--accent-vip);
         }
 
         /* DESIGN DA SECÇÃO DE PATROCINADORES */
@@ -156,144 +280,6 @@
             background: rgba(59, 130, 246, 0.1);
         }
 
-        /* DESIGN DA SECÇÃO DOS PLANOS VIP */
-        .info-box {
-            text-align: center;
-            margin-bottom: 35px;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            background: rgba(255, 204, 0, 0.05);
-            border: 1px solid rgba(255, 204, 0, 0.2);
-            color: var(--accent-vip);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .price-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 35px 20px;
-            text-align: center;
-            position: relative;
-            transition: transform 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .price-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .price-card h4 {
-            color: var(--accent-vip);
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-
-        .price span {
-            font-size: 1rem;
-            color: var(--text-gray);
-        }
-
-        .price-card ul {
-            list-style: none;
-            color: var(--text-gray);
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .price-card ul li strong {
-            color: #ffffff;
-        }
-
-        .badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #2d3748;
-            color: var(--accent-vip);
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            border-radius: 20px;
-            border: 1px solid var(--accent-vip);
-            text-transform: uppercase;
-        }
-
-        /* BOTÃO DO WHATSAPP */
-        .btn-buy {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: var(--whatsapp-green);
-            color: #ffffff;
-            border-radius: 8px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: background 0.2s ease;
-        }
-
-        .btn-buy:hover {
-            background-color: #1ebd58;
-        }
-
-        /* SECÇÃO DE PACOTES SIMPLES */
-        .simple-section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin: 40px 0 10px 0;
-            color: #ffffff;
-        }
-
-        .simple-section-subtitle {
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-        }
-
-        .simple-grid .price-card h4 {
-            color: var(--accent-blue);
-        }
-
-        .warning-box {
-            border: 1px dashed #7f1d1d;
-            background-color: rgba(127, 29, 29, 0.2);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 650px;
-            margin: 40px auto 0 auto;
-            text-align: center;
-        }
-
-        .warning-box p {
-            font-size: 0.95rem;
-            color: #f87171;
-            line-height: 1.6;
-        }
-
-        .warning-box strong {
-            color: #ef4444;
-        }
-
         /* RODAPÉ */
         footer {
             text-align: center;
@@ -322,28 +308,34 @@
         <p>Desenvolvimento web profissional para colocar o seu negócio no topo.</p>
     </header>
 
-    <!-- BOTÕES DE NAVEGAÇÃO INTERNA (PLANOS VIP / PATROCINADORES) -->
+    <!-- BOTÕES DE SELEÇÃO INTERNA -->
     <div class="navigation-container">
-        <button class="nav-btn active" data-target="vip-section">⭐ Planos VIP</button>
+        <button class="nav-btn active" data-target="simples-section">📋 Pacotes Simples</button>
+        <button class="nav-btn" data-target="vip-section">⭐ Planos VIP</button>
         <button class="nav-btn" data-target="sponsors-section">🤝 Patrocinadores</button>
     </div>
 
-    <!-- CONTEÚDO BLOCO 1: PLANOS VIP (ATIVO POR PADRÃO) -->
-    <main id="vip-section" class="content-section active-block">
-        <div class="info-box">
-            ⏱ Entrega em 42h | 🌐 Domínio Incluído | 🛠 Direito a Manutenção
+    <!-- 1. OS SEUS 5 PACOTES SIMPLES (ABRE VISÍVEL POR PADRÃO) -->
+    <main id="simples-section" class="content-section active-block">
+        <div class="info-box simple-warning">
+            ⚠️ <strong>ATENÇÃO:</strong> Estes sites não têm domínio incluído. Tens que ir para o VIP para teres domínio!
         </div>
-        
-        <div class="pricing-grid">
-            <!-- Página Canva VIP -->
+
+        <div class="pricing-grid simple-grid">
+            <!-- Página Canva -->
             <div class="price-card">
-                <div class="badge">VIP</div>
-                <h4>Página Canva VIP</h4>
-                <div class="price">2.000 <span>MT</span></div>
+                <h4>Página Canva</h4>
+                <div class="price">500 <span>MT</span></div>
                 <ul>
-                    <li>🌐 <strong>Domínio Incluído</strong></li>
-                    <li>🛠 Suporte Premium</li>
+                    <li>❌ Sem domínio grátis</li>
+                    <li>🎨 Apenas Design e Estrutura</li>
                 </ul>
                 <a href="https://wa.me" class="btn-buy" target="_blank">Falar no WhatsApp</a>
             </div>
 
+            <!-- Site Pessoal -->
+            <div class="price-card">
+                <h4>Site Pessoal</h4>
+                <div class="price">1.000 <span>MT</span></div>
+                <ul>
+                    <li>❌ Sem domínio grátis</li>
