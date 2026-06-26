@@ -1,4 +1,6 @@
-/* --- ESTILOS GERAIS E RESETS --- */
+/* ==========================================================================
+   1. ESTILOS GERAIS E RESETS
+   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,13 +12,16 @@ body {
   background-color: #0f0f0f;
   color: #ffffff;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
 }
 
-/* --- HEADER PRINCIPAL --- */
+/* ==========================================================================
+   2. HEADER PRINCIPAL
+   ========================================================================== */
 header {
   display: flex;
   justify-content: space-between;
@@ -33,6 +38,7 @@ header {
   font-size: 1.5rem;
   color: #fff;
   font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .nav-buttons {
@@ -40,7 +46,9 @@ header {
   gap: 15px;
 }
 
-/* --- BOTÕES GERAIS DO HEADER --- */
+/* ==========================================================================
+   3. BOTÕES DO HEADER E COMPONENTES GERAIS
+   ========================================================================== */
 .yt-button {
   background: #272727;
   color: #fff;
@@ -50,20 +58,20 @@ header {
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .yt-button:hover {
   background: #3f3f3f;
 }
 
-/* --- BOTÃO VIP ESPECIAL --- */
+/* BOTÃO VIP ESPECIAL (HEADER E CONTRATAÇÃO) */
 .vip-button {
   background: linear-gradient(45deg, #ffd700, #ffa500);
-  color: #000;
+  color: #000 !important;
   border: none;
   box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
 .vip-button:hover {
@@ -72,7 +80,45 @@ header {
   box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
 }
 
-/* --- OVERLAYS (TELA CHEIA) --- */
+/* BOTÃO VER DEMO INTERNAL DOS CARDS */
+.demo-btn {
+  display: block;
+  width: 100%;
+  background: #1f1f1f;
+  color: #bbb;
+  border: 1px solid #333;
+  padding: 11px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 15px;
+  transition: all 0.2s ease;
+}
+
+.demo-btn:hover {
+  background: #2a2a2a;
+  color: #fff;
+  border-color: #555;
+}
+
+/* BOTÃO PADRÃO DE CONTRATAÇÃO DENTRO DOS CARDS */
+.card .btn-contratar {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   4. OVERLAYS (TELAS CHEIAS - PATROCINADORES / VIP)
+   ========================================================================== */
 .full-screen-overlay {
   position: fixed;
   top: 0;
@@ -120,13 +166,13 @@ header {
 }
 
 .overlay-content {
-  padding: 40px 10%;
+  padding: 40px 5%;
   text-align: center;
   overflow-y: auto;
   flex: 1;
 }
 
-/* --- BLOCO DE BENEFÍCIOS VIP --- */
+/* BLOCO DE BENEFÍCIOS VIP */
 .bloco-beneficios-vip {
   background: #1a1a1a;
   border: 2px solid #ffd700;
@@ -150,45 +196,64 @@ header {
   color: #ffd700;
 }
 
-/* --- GRID DE PREÇOS --- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-  padding: 0 5%;
+/* ==========================================================================
+   5. GRID E CARDS DE PREÇO (RESPONSIVOS)
+   ========================================================================== */
+main {
+  padding: 50px 5%;
+  text-align: center;
 }
 
-/* --- CARDS DE PREÇO --- */
+main h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+main p {
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  padding: 0 2%;
+}
+
 .card {
   background: #1a1a1a;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   border: 1px solid #2d2d2d;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s, border-color 0.3s;
+  text-align: left;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   border-color: #555;
 }
 
+/* CARDS DO PAINEL VIP */
 .card.vip-card {
   background: #141414;
   border: 1px solid #ffd700;
 }
 
 .card.vip-card:hover {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
 }
 
 .card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .card.vip-card h3 {
@@ -196,73 +261,49 @@ header {
 }
 
 .price {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 800;
   color: #ffffff;
-  margin: 15px 0;
+  margin: 20px 0 5px 0;
 }
 
 .tag {
-  font-size: 12px;
+  display: inline-block;
+  font-size: 11px;
   text-transform: uppercase;
   background: #ffd700;
   color: #000;
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 4px;
   font-weight: bold;
-  align-self: max-content;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-/* Botão de contratação interno do card */
-.card .vip-button, .card .yt-button {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 12px;
-  margin-top: 15px;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-/* --- SEÇÃO PLANOS SIMPLES --- */
-main {
-  padding: 50px 5%;
-  text-align: center;
-}
-
-main h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-main p {
-  color: #aaa;
-  margin-bottom: 30px;
-}
-
-/* --- CAIXA DE AVISO (DOMÍNIO) --- */
+/* ==========================================================================
+   6. CAIXA DE AVISO E PATROCINADORES
+   ========================================================================== */
 .aviso-dominio {
-  background: rgba(255, 0, 0, 0.1);
+  background: rgba(255, 0, 0, 0.07);
   border: 2px dashed #ff4444;
   color: #ff9999;
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
-  max-width: 600px;
-  margin: 50px auto 20px auto;
+  max-width: 650px;
+  margin: 60px auto 20px auto;
   font-size: 1.1rem;
   font-weight: bold;
   text-align: center;
 }
 
-/* --- LOGO DO PATROCINADOR --- */
 .logo-patrocinador {
   width: 150px;
   height: auto;
   margin-top: 20px;
 }
 
-/* --- BOTÃO FLUTUANTE WHATSAPP --- */
+/* ==========================================================================
+   7. BOTÃO FLUTUANTE DO WHATSAPP
+   ========================================================================== */
 .whatsapp-btn {
   position: fixed;
   bottom: 25px;
@@ -272,11 +313,150 @@ main p {
   padding: 15px 25px;
   border-radius: 50px;
   font-weight: bold;
+  font-size: 15px;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, background-color 0.2s;
 }
 
 .whatsapp-btn:hover {
   transform: scale(1.05);
+  background-color: #20ba5a;
+}
+
+/* ==========================================================================
+   8. JANELA MODAL DE DEMONSTRAÇÃO (POP-UP DA DEMO)
+   ========================================================================== */
+.modal-demo {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.92);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: #161616;
+  padding: 30px;
+  border-radius: 14px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  border: 1px solid #2d2d2d;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 22px;
+  color: #888;
+  font-size: 34px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: #ff4444;
+}
+
+/* BOTÃO DE LINK EXTERNO ONLINE */
+.visitar-site-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fff !important;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin: 15px 0 25px 0;
+  font-size: 15px;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.visitar-site-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+/* CONTAINER DO SCREENSHOT */
+.container-img-demo {
+  width: 100%;
+  max-height: 60vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  background: #090909;
+  border: 1px solid #222;
+}
+
+.container-img-demo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilização da barra de rolagem interna do screenshot */
+.container-img-demo::-webkit-scrollbar {
+  width: 8px;
+}
+.container-img-demo::-webkit-scrollbar-track {
+  background: #111;
+}
+.container-img-demo::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+.container-img-demo::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* ==========================================================================
+   9. ADAPTAÇÕES PARA VEÍCULOS MÓVEIS (RESPONSIVIDADE)
+   ========================================================================== */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .nav-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  main h1 {
+    font-size: 1.8rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .bloco-beneficios-vip {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .modal-content {
+    padding: 20px 15px;
+  }
+
+  .whatsapp-btn {
+    padding: 12px 20px;
+    font-size: 13px;
+    bottom: 15px;
+    right: 15px;
+  }
 }
