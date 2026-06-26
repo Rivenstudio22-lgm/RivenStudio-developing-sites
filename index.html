@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="hD1QMAhdnCDJ9gI12uDlyH19PL_XBvUk81GGi_B8Sjg" />
   <title>ReivenStudio | Criação de Sites</title>
+  
+  <!-- VÍNCULO COM O ARQUIVO CSS EXTERNO -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- ÍCONE DO SITE -->
   <link rel="icon" type="image/png" href="Reivenstudio.png">
 </head>
 <body>
@@ -31,7 +35,7 @@
     </div>
   </div>
 
-  <!-- TELA VIP -->
+  <!-- TELA VIP (PAINEL FULL-SCREEN DOS PLANOS VIP) -->
   <div id="painelVIP" class="full-screen-overlay" style="background: #0d0d0d;">
     <div class="overlay-header">
       <button class="back-btn" onclick="fecharTudo()">← Voltar ao Normal</button>
@@ -41,6 +45,7 @@
       <h1 style="color: #ffd700; margin-bottom: 5px;">Pacotes Profissionais "Tudo Incluído"</h1>
       <p style="color: #aaa; margin-bottom: 30px;">A solução definitiva para o seu negócio.</p>
       
+      <!-- BLOCO DE BENEFÍCIOS VIP -->
       <div class="bloco-beneficios-vip">
         <div class="item-beneficio">⏱ Entrega em 42h</div>
         <div class="item-beneficio">🌐 Domínio Incluído</div>
@@ -96,7 +101,7 @@
           </div>
           <div>
             <div class="price">6.500 MT</div>
-            <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'restaurante_vip.png', 'Restaurante VIP')">Ver Demo</button>
+            <button class="demo-btn" onclick="abrirDemo('https://github.io', 'restaurante_vip.png', 'Restaurante VIP')">Ver Demo</button>
             <a href="https://wa.me." target="_blank" class="vip-button btn-contratar">Contratar VIP</a>
           </div>
         </div>
@@ -117,7 +122,7 @@
     </div>
   </div>
 
-  <!-- CONTEÚDO PRINCIPAL (PLANOS SIMPLES) -->
+  <!-- CONTEÚDO PRINCIPAL (PACOTES SIMPLES) -->
   <main>
     <h1>Nossos Pacotes Simples</h1>
     <p>Preços apenas pela criação do design e montagem da estrutura.</p>
@@ -130,7 +135,7 @@
         </div>
         <div>
           <div class="price">500 MT</div>
-          <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'canva_simples.png', 'Página Canva Simples')">Ver Demo</button>
+          <button class="demo-btn" onclick="abrirDemo('https://github.io', 'canva_simples.png', 'Página Canva Simples')">Ver Demo</button>
           <a href="https://wa.me." target="_blank" class="yt-button btn-contratar">Solicitar Plano</a>
         </div>
       </div>
@@ -166,7 +171,7 @@
         </div>
         <div>
           <div class="price">5.000 MT</div>
-          <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'restaurante_simples.png', 'Restaurante Simples')">Ver Demo</button>
+          <button class="demo-btn" onclick="abrirDemo('https://github.io', 'restaurante_simples.png', 'Restaurante Simples')">Ver Demo</button>
           <a href="https://wa.me." target="_blank" class="yt-button btn-contratar">Solicitar Plano</a>
         </div>
       </div>
@@ -184,17 +189,13 @@
       </div>
     </div>
 
-    <!-- ... Resto dos cards dos pacotes simples que já estão no seu site ... -->
-
-    <!-- CAIXA DE AVISO (DOMÍNIO) -->
+       <!-- CAIXA DE AVISO (DOMÍNIO) -->
     <div class="aviso-dominio">
       ⚠️ ATENÇÃO: Estes sites não têm domínio incluído.<br>
       Tens que ir para o VIP para teres domínio!
     </div>
 
-    <!-- ========================================================================== -->
-    <!-- COLE AQUI A NOVA PARTE DA SECÇÃO DE FEEDBACK E AVALIAÇÕES -->
-    <!-- ========================================================================== -->
+    <!-- SECÇÃO DE FEEDBACK E AVALIAÇÕES -->
     <section class="seccao-feedback">
       <h2>Avaliações dos Nossos Clientes</h2>
       <p>Deixe a sua opinião ou veja o que dizem sobre a ReivenStudio.</p>
@@ -220,7 +221,6 @@
 
       <!-- Lista onde os comentários vão aparecer publicamente -->
       <div id="listaComentarios" class="lista-comentarios">
-        <!-- Comentário Exemplo que já vem visível por padrão -->
         <div class="comentario-item">
           <div class="comentario-topo">
             <span class="comentario-nome">Edmilson Cumbe</span>
@@ -230,9 +230,7 @@
         </div>
       </div>
     </section>
-    <!-- ========================================================================== -->
-
-  </main> <!-- AQUI FECHA O MAIN -->
+  </main> <!-- FIM DO MAIN -->
 
   <!-- BOTÃO FLUTUANTE WHATSAPP -->
   <a href="https://whatsapp.com" class="whatsapp-btn" target="_blank">
@@ -241,7 +239,16 @@
 
   <!-- JANELA FLUTUANTE DA DEMO (MODAL) -->
   <div id="modalDemo" class="modal-demo">
-     <!-- Conteúdo do modal... -->
+    <div class="modal-content">
+      <span class="close-modal" onclick="fecharDemo()">&times;</span>
+      <h2 id="modalTitle" style="color: #fff;">Visualização do Layout</h2>
+      
+      <a id="linkDemoSite" href="#" target="_blank" class="visitar-site-btn">🌐 Visitar Site Online</a>
+      
+      <div class="container-img-demo">
+        <img id="imgDemo" src="" alt="Screenshot da Demo">
+      </div>
+    </div>
   </div>
 
   <!-- VÍNCULO COM O ARQUIVO JAVASCRIPT EXTERNO -->
