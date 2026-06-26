@@ -1,22 +1,26 @@
-// SELEÇÃO DOS ELEMENTOS DOS PAINÉIS
-const pPatroc = document.getElementById('painelPatrocinadores');
-const pVIP = document.getElementById('painelVIP');
+// CONTROLE DA JANELA MODAL DE DEMONSTRAÇÃO COM LINK E IMAGEM
+const modalDemo = document.getElementById('modalDemo');
+const imgDemo = document.getElementById('imgDemo');
+const modalTitle = document.getElementById('modalTitle');
+const linkDemoSite = document.getElementById('linkDemoSite');
 
-// EVENTO PARA ABRIR O PAINEL DE PATROCINADORES
-document.getElementById('btnAbrirPatrocinadores').onclick = () => {
-  pPatroc.classList.add('active');
-  document.body.style.overflow = 'hidden'; // Remove o scroll do fundo
-};
+function abrirDemo(urlSite, nomeImagem, nomePlano) {
+  modalTitle.innerText = "Demonstração: " + nomePlano;
+  linkDemoSite.href = urlSite;   // Configura o link do site online
+  imgDemo.src = nomeImagem;      // Configura o caminho do print
+  modalDemo.style.display = "flex";
+  document.body.style.overflow = "hidden"; // Bloqueia o scroll de fundo
+}
 
-// EVENTO PARA ABRIR O PAINEL VIP
-document.getElementById('btnAbrirVIP').onclick = () => {
-  pVIP.classList.add('active');
-  document.body.style.overflow = 'hidden'; // Remove o scroll do fundo
-};
+function fecharDemo() {
+  modalDemo.style.display = "none";
+  if(pPatroc.style.display !== 'flex' && pVIP.style.display !== 'flex') {
+     document.body.style.overflow = "auto";
+  }
+}
 
-// FUNÇÃO GLOBAL PARA FECHAR TODOS OS PAINÉIS (CHAMADA NOS BOTÕES DE VOLTAR)
-function fecharTudo() {
-  pPatroc.classList.remove('active');
-  pVIP.classList.remove('active');
-  document.body.style.overflow = 'auto'; // Devolve o scroll ao fundo
+window.onclick = function(event) {
+  if (event.target == modalDemo) {
+    fecharDemo();
+  }
 }
