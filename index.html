@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="hD1QMAhdnCDJ9gI12uDlyH19PL_XBvUk81GGi_B8Sjg" />
   <title>ReivenStudio | Criação de Sites</title>
-  
-  <!-- VÍNCULO COM O ARQUIVO CSS EXTERNO -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- ÍCONE DO SITE -->
   <link rel="icon" type="image/png" href="Reivenstudio.png">
 </head>
 <body>
@@ -31,6 +27,7 @@
     </div>
     <div class="overlay-content">
       <h1>Patrocinado por:</h1>
+      <p style="color: #aaa; margin-top: 20px;">Espaço reservado para patrocinadores oficiais da ReivenStudio.</p>
     </div>
   </div>
 
@@ -44,7 +41,6 @@
       <h1 style="color: #ffd700; margin-bottom: 5px;">Pacotes Profissionais "Tudo Incluído"</h1>
       <p style="color: #aaa; margin-bottom: 30px;">A solução definitiva para o seu negócio.</p>
       
-      <!-- BLOCO DE BENEFÍCIOS VIP -->
       <div class="bloco-beneficios-vip">
         <div class="item-beneficio">⏱ Entrega em 42h</div>
         <div class="item-beneficio">🌐 Domínio Incluído</div>
@@ -61,7 +57,8 @@
           </div>
           <div>
             <div class="price">2.000 MT</div>
-            <a href="https://whatsapp.com" target="_blank" class="vip-button">Contratar VIP</a>
+            <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'canva_vip.png', 'Página Canva VIP')">Ver Demo</button>
+            <a href="https://wa.me." target="_blank" class="vip-button btn-contratar">Contratar VIP</a>
           </div>
         </div>
 
@@ -73,7 +70,8 @@
           </div>
           <div>
             <div class="price">2.500 MT</div>
-            <a href="https://whatsapp.com" target="_blank" class="vip-button">Contratar VIP</a>
+            <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'pessoal_vip.png', 'Site Pessoal VIP')">Ver Demo</button>
+            <a href="https://wa.me." target="_blank" class="vip-button btn-contratar">Contratar VIP</a>
           </div>
         </div>
 
@@ -85,7 +83,8 @@
           </div>
           <div>
             <div class="price">4.500 MT</div>
-            <a href="https://whatsapp.com" target="_blank" class="vip-button">Contratar VIP</a>
+            <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'marca_vip.png', 'Marca / Roupa VIP')">Ver Demo</button>
+            <a href="https://wa.me." target="_blank" class="vip-button btn-contratar">Contratar VIP</a>
           </div>
         </div>
 
@@ -97,7 +96,8 @@
           </div>
           <div>
             <div class="price">6.500 MT</div>
-            <a href="https://whatsapp.com" target="_blank" class="vip-button">Contratar VIP</a>
+            <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'restaurante_vip.png', 'Restaurante VIP')">Ver Demo</button>
+            <a href="https://wa.me." target="_blank" class="vip-button btn-contratar">Contratar VIP</a>
           </div>
         </div>
 
@@ -109,7 +109,8 @@
           </div>
           <div>
             <div class="price">8.500 MT</div>
-            <a href="https://whatsapp.com" target="_blank" class="vip-button">Contratar VIP</a>
+            <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'webapp_vip.png', 'Web App VIP')">Ver Demo</button>
+            <a href="https://wa.me." target="_blank" class="vip-button btn-contratar">Contratar VIP</a>
           </div>
         </div>
       </div>
@@ -122,29 +123,64 @@
     <p>Preços apenas pela criação do design e montagem da estrutura.</p>
 
     <div class="grid">
+      <!-- 1. Página Canva Simples -->
       <div class="card">
-        <h3>Página Canva</h3>
-        <div class="price">500 MT</div>
+        <div>
+          <h3>Página Canva</h3>
+        </div>
+        <div>
+          <div class="price">500 MT</div>
+          <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'canva_simples.png', 'Página Canva Simples')">Ver Demo</button>
+          <a href="https://wa.me." target="_blank" class="yt-button btn-contratar">Solicitar Plano</a>
+        </div>
       </div>
 
+      <!-- 2. Site Pessoal Simples -->
       <div class="card">
-        <h3>Site Pessoal</h3>
-        <div class="price">1.000 MT</div>
+        <div>
+          <h3>Site Pessoal</h3>
+        </div>
+        <div>
+          <div class="price">1.000 MT</div>
+          <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'pessoal_simples.png', 'Site Pessoal Simples')">Ver Demo</button>
+          <a href="https://wa.me." target="_blank" class="yt-button btn-contratar">Solicitar Plano</a>
+        </div>
       </div>
 
+      <!-- 3. Marca / Roupa Simples -->
       <div class="card">
-        <h3>Marca / Roupa</h3>
-        <div class="price">3.000 MT</div>
+        <div>
+          <h3>Marca / Roupa</h3>
+        </div>
+        <div>
+          <div class="price">3.000 MT</div>
+          <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'marca_simples.png', 'Marca / Roupa Simples')">Ver Demo</button>
+          <a href="https://wa.me." target="_blank" class="yt-button btn-contratar">Solicitar Plano</a>
+        </div>
       </div>
 
+      <!-- 4. Restaurante Simples -->
       <div class="card">
-        <h3>Restaurante</h3>
-        <div class="price">5.000 MT</div>
+        <div>
+          <h3>Restaurante</h3>
+        </div>
+        <div>
+          <div class="price">5.000 MT</div>
+          <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'restaurante_simples.png', 'Restaurante Simples')">Ver Demo</button>
+          <a href="https://wa.me." target="_blank" class="yt-button btn-contratar">Solicitar Plano</a>
+        </div>
       </div>
 
+      <!-- 5. Web App Simples -->
       <div class="card">
-        <h3>Web App</h3>
-        <div class="price">7.000 MT</div>
+        <div>
+          <h3>Web App</h3>
+        </div>
+        <div>
+          <div class="price">7.000 MT</div>
+          <button class="demo-btn" onclick="abrirDemo('https://exemplo.com', 'webapp_simples.png', 'Web App Simples')">Ver Demo</button>
+          <a href="https://wa.me." target="_blank" class="yt-button btn-contratar">Solicitar Plano</a>
+        </div>
       </div>
     </div>
 
@@ -154,12 +190,25 @@
     </div>
   </main>
 
-  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <!-- JANELA FLUTUANTE DA DEMO ATUALIZADA (MODAL) -->
+  <div id="modalDemo" class="modal-demo">
+    <div class="modal-content">
+      <span class="close-modal" onclick="fecharDemo()">&times;</span>
+      <h2 id="modalTitle" style="color: #fff;">Visualização do Layout</h2>
+      
+      <!-- LINK DO SITE ONLINE -->
+      <a id="linkDemoSite" href="#" target="_blank" class="visitar-site-btn">🌐 Visitar Site Online</a>
+      
+      <div class="container-img-demo">
+        <img id="imgDemo" src="" alt="Screenshot da Demo">
+      </div>
+    </div>
+  </div>
+
   <a href="https://whatsapp.com" class="whatsapp-btn" target="_blank">
     entre no grupo dos planos normais
   </a>
 
-  <!-- VÍNCULO COM O ARQUIVO JAVASCRIPT EXTERNO -->
   <script src="script.js"></script>
 </body>
 </html>
