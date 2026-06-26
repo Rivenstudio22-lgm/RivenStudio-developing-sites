@@ -184,31 +184,67 @@
       </div>
     </div>
 
+    <!-- ... Resto dos cards dos pacotes simples que já estão no seu site ... -->
+
+    <!-- CAIXA DE AVISO (DOMÍNIO) -->
     <div class="aviso-dominio">
       ⚠️ ATENÇÃO: Estes sites não têm domínio incluído.<br>
       Tens que ir para o VIP para teres domínio!
     </div>
-  </main>
 
-  <!-- JANELA FLUTUANTE DA DEMO ATUALIZADA (MODAL) -->
-  <div id="modalDemo" class="modal-demo">
-    <div class="modal-content">
-      <span class="close-modal" onclick="fecharDemo()">&times;</span>
-      <h2 id="modalTitle" style="color: #fff;">Visualização do Layout</h2>
-      
-      <!-- LINK DO SITE ONLINE -->
-      <a id="linkDemoSite" href="#" target="_blank" class="visitar-site-btn">🌐 Visitar Site Online</a>
-      
-      <div class="container-img-demo">
-        <img id="imgDemo" src="" alt="Screenshot da Demo">
+    <!-- ========================================================================== -->
+    <!-- COLE AQUI A NOVA PARTE DA SECÇÃO DE FEEDBACK E AVALIAÇÕES -->
+    <!-- ========================================================================== -->
+    <section class="seccao-feedback">
+      <h2>Avaliações dos Nossos Clientes</h2>
+      <p>Deixe a sua opinião ou veja o que dizem sobre a ReivenStudio.</p>
+
+      <!-- Formulário para enviar comentário -->
+      <form id="formFeedback" class="form-feedback">
+        <input type="text" id="nomeCliente" placeholder="O seu nome profissional" required>
+        
+        <div class="seletor-estrelas">
+          <span class="label-estrelas">Sua Avaliação:</span>
+          <div class="estrelas-input">
+            <span class="star-btn" data-value="1">★</span>
+            <span class="star-btn" data-value="2">★</span>
+            <span class="star-btn" data-value="3">★</span>
+            <span class="star-btn" data-value="4">★</span>
+            <span class="star-btn" data-value="5">★</span>
+          </div>
+        </div>
+
+        <textarea id="comentarioCliente" rows="3" placeholder="Escreva aqui o que achou dos nossos serviços e sites..." required></textarea>
+        <button type="submit" class="yt-button">Publicar Avaliação</button>
+      </form>
+
+      <!-- Lista onde os comentários vão aparecer publicamente -->
+      <div id="listaComentarios" class="lista-comentarios">
+        <!-- Comentário Exemplo que já vem visível por padrão -->
+        <div class="comentario-item">
+          <div class="comentario-topo">
+            <span class="comentario-nome">Edmilson Cumbe</span>
+            <span class="comentario-estrelas">★★★★★</span>
+          </div>
+          <p class="comentario-texto">Excelente trabalho! O meu site de restaurante ficou pronto super rápido e o design responsivo no telemóvel atrai muitos clientes. Recomendo imenso a ReivenStudio.</p>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+    <!-- ========================================================================== -->
 
+  </main> <!-- AQUI FECHA O MAIN -->
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
   <a href="https://whatsapp.com" class="whatsapp-btn" target="_blank">
     entre no grupo dos planos normais
   </a>
 
+  <!-- JANELA FLUTUANTE DA DEMO (MODAL) -->
+  <div id="modalDemo" class="modal-demo">
+     <!-- Conteúdo do modal... -->
+  </div>
+
+  <!-- VÍNCULO COM O ARQUIVO JAVASCRIPT EXTERNO -->
   <script src="script.js"></script>
 </body>
 </html>
